@@ -58,20 +58,43 @@ The reasons why Wi-Fi is becoming increasingly important are: **Cost issue** 、
   - LTE-LAA combines licensed and unlicensed spectrum to improve network capacity and efficiency.
     
 
-![](../src/New%20Technology%20Development%20Trends.png)
+    ![](../src/New%20Technology%20Development%20Trends.png)
 
 
 4. Cloud/edge computing
+   - Expansion of Resources and Computing Capacity
 5. SDN & NFV
+   - **Software-Defined Networking** : is a network architecture that separates network control and data forwarding functions,and managed by central controller software allowing for more flexibility and programmability in managing network configurations.
+   - **Network Function Virtualization** : is a method of virtualizing network infrastructure components, such as routers and firewalls, to replace traditional hardware devices with virtualized software instances, enhancing network scalability and efficiency.
 6. Network slicing
+   - Resource slicing : Bandwidth、port、cpu、Antenna
+   - For the sake of transmission speed,QoS and special channels.
+   - Challenges of E2E Network Slicing: Crossing WANs, Different Manufacturers and Devices, Various Owners, Dynamic Allocation, and **Real-time** Requirements.
 7. Service-oriented cloud
+   - Scalable and flexible, no longer requiring the construction of large data centers.
 8. Internet QoS
+   - Professionals:Measure traffic, latency, and network quality.
+   - General users:Survey rating to assess user experience and integrating **machine learning** for future network architecture model evaluation.
 9. Resource management
 10. Massive MIMO
+    - Multiple antennas.
+    - The higher the frequency, the smaller the antenna size. This is why older mobile phones used to have a large antenna, while modern ones no longer visibly feature an antenna.
+    - The higher the frequency, the smaller the antenna size, making it possible to create array antennas within devices.
+    - MIMO (Multiple Input, Multiple Output)performs **channel detection and precoding mathematical calculations** to avoid interference between multiple antennas.
+    - If the calculation results are **in polar coordinates and orthogonal**, they do not affect each other.
+    - However, because channel detection and state feedback also take time, the benefits of MIMO, which originally increase speed, will be reduced. Therefore, **there exists an optimal value for the trade-off between the number of antennas and speed.**
 11. CoMP (Coordinated Multi-Point Transmission)
-12. Beamforming technolog
+    - Cooperative transmission **between different base stations and different access points**.
+    - It aims to reduce interference, enhance transmission speeds, expand coverage areas, and thus improve the quality and efficiency of wireless communication. This is particularly useful in high-density user areas and edge coverage zones.
+12. Beamforming technology
+    - Transmitting and receiving wireless signals in a specific direction or towards specific devices to enhance signal strength, reduce interference, and increase data transmission rates.
+    - For example,Omnidirectional propagation can lead to a problem where energy is wasted when individuals who are not intended recipients also receive the signal in the forward direction.
 
-> 30:29
+
+
+
+
+
 
 
 
