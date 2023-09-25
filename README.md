@@ -21,3 +21,8 @@ This is my graduate course notes when I was studying at NYCU.
      * CoMP (Coordinated Multi-Point Transmission)
      * Beamforming technolog
    - [GSM Architecture](./Chapter/GSM%20Architecture.md) 
+     * 2G
+     * 3G
+     * 4G
+     * 5G
+     * Base Station System

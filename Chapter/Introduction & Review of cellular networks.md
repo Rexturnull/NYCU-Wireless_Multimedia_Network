@@ -50,9 +50,9 @@ The reasons why Wi-Fi is becoming increasingly important are: **Cost issue** 、
 > Videos encompass not only entertainment but also remote work, real-time surgeries, video conferences, and internet surveillance, and more.
 
 # New Technology Development Trends
-1. Not only Small cell,but also high-density, low-power, multi-antenna, and highly directional solutions.
+1. Not only **Small cell**,but also high-density, low-power, multi-antenna, and highly directional solutions.
 2. Multi-RAN (heterogeneous network)
-3. Unlicensed band utilization [LTE-U: LTE-LAA (License Assisted Access)]
+3. Unlicensed band utilization [LTE-U: LTE-LAA (License Assisted Access)] is defined by the **3GPP organization**.
     > Using Wi-Fi in areas with limited or no cellular traffic coverage.
   - LTE-U enables LTE signals to work in unlicensed spectrum bands to enhance wireless network performance
   - LTE-LAA combines licensed and unlicensed spectrum to improve network capacity and efficiency.
