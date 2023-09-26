@@ -26,3 +26,6 @@ This is my graduate course notes when I was studying at NYCU.
      * 4G
      * 5G
      * Base Station System
+     * From UMTS to LTE
+       * Circuit Core (Circuit Switched Core) 
+       * Packet Core (IP convergence)
