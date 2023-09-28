@@ -51,8 +51,22 @@ equipment
 
 # 4G
 ![](../src/GSM%20Architecture%204G.png)
+1. **Serving Gateway** is the same as the previously mentioned MSC.
+2. **HSS** is similar to the previously mentioned HLR,like **database**.
+3. **PDN GW**(Packet Data Network Gateway) is a crucial component in LTE (Long-Term Evolution) or 4G networks. It is responsible for handling and managing data communication, allowing mobile devices to connect to the internet or corporate internal networks.
+4. **MME** (Mobility Management Entity) is a vital component in LTE or 4G networks responsible for device mobility management, including **registration, authentication, location tracking, and control of mobile device connections**.
+   - To verify with HSS
+   - Control the Serving Gateway for tunnel establishment.
+5. **PCRF**（Policy and Charging Rules Function） is responsible for managing and controlling the **policy and billing rules** for data traffic.
+6. **Non-3GPP** in 4G networks refers to networks and resources **outside the 3GPP standards**. When a **4G network needs to expand or use non-3GPP resources**, it may involve utilizing other non-3GPP networks to provide services, like Wi-Fi or other wireless networks, to enhance coverage and capacity. This helps improve network performance and flexibility for various scenarios and applications.
+   - For trusted networks, **direct access to the core network** is allowed.
+   - For untrusted networks, **access requires passing through an agent** for authentication and security purposes.
+
+   This concept is related to **<font color=red>heterogeneous networks (HetNets)</font>** or the use of non-3GPP networks alongside 4G networks to enhance their capabilities and coverage. 
+   
+
+
 ![](../src/GSM%20Architecture%204G-1.png)
-# 5G
 
 
 # Base Station System
@@ -70,6 +84,8 @@ Generation | Mobile Station | Base Station System
 
 > LTE (Long-Term Evolution) is a wireless communication technology used to provide high-speed data transmission and mobile communication services.
 
+> VoLTE (Voice over Long-Term Evolution) is a technology that allows voice calls to be transmitted over a 4G LTE (Long-Term Evolution) network. When 4G was initially introduced, our voice calls were covertly transferred to the 3G network.
+
 ## Circuit Core (Circuit Switched Core) 
    - Circuit Core is a communication system based on fixed circuit-switched connections, primarily designed to support **traditional voice calls**.
    - Call charges are typically **billed per second**, meaning that during voice calls, the communication system calculates charges based on the actual call duration.
@@ -78,3 +94,4 @@ Generation | Mobile Station | Base Station System
    - Packet Core is a communication system that specializes in handling **data communication and packet-based data transmission**. It is typically used to support mobile data transmission, such as internet access, application usage, and messaging.
    - The billing method for Packet Core is typically **based on data usage rather than charging by call duration**. This means that users are billed based on the amount of data they transmit.
    - It **ensures efficient data routing, transmission**, and management to ensure users can quickly access the data and services they need.
+   - The Packet Core is **<font color=red>designed with memory and buffers to address priority issues</font>** and ensure data is processed in a first-come-first-served manner.
