@@ -35,6 +35,8 @@ The reasons why Wi-Fi is becoming increasingly important are: **Cost issue** 、
   - The future of networking is undoubtedly moving towards a heterogeneous network, including low Earth orbit satellite communication.
   - **The development of a single network type is not what we look forward to.**
 
+---
+
 # Device Analysis
 1. Cisco, Ericsson, TI, and others predict there will be more than 20 billions connected devices by 2020
 2. Bringing connectivity to those objects is challenge
@@ -45,9 +47,14 @@ The reasons why Wi-Fi is becoming increasingly important are: **Cost issue** 、
 > Smart manufacturing, intelligent transportation, telemedicine, smart homes, and automotive autonomous driving devices all fall under the category of IoT devices.
 
 
+---
+
 # Application Traffic Growth
 ![](./../src/Application%20Traffic%20Growth.png)
 > Videos encompass not only entertainment but also remote work, real-time surgeries, video conferences, and internet surveillance, and more.
+
+
+---
 
 # New Technology Development Trends
 1. Not only **Small cell**,but also high-density, low-power, multi-antenna, and highly directional solutions.
