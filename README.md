@@ -37,3 +37,12 @@ This is my graduate course notes when I was studying at NYCU.
    - ACIA 5G QoS
    - Caculate Delay variance、Delay jitter
 2. Resource Allocation
+   - Resource Allocation
+   - Congestion Control
+   - Classification of Resource Allocation
+3. Evaluation Criteria
+   - Delay
+   - Effectively
+   - Fairness
+4. Queueing Disciplines
+   - Queueing Disciplines
