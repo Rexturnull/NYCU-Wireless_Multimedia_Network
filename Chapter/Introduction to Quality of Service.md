@@ -229,6 +229,7 @@ finishes transmitting packet i-1 for the flow
      **Example, weight:2 ,P / 2 to reduce the value of Fi and increase its transmission priority.**
    - Therefore, this weight controls the percentage of the link’s bandwidth that the flow will get
 
+---
 
 # Proportional-Fair Resource Allocation
 1. Motivation of proportional fairness : **Maximize the total wireless network throughput** while at the same time allowing all users **at least a minimal level of service**
@@ -236,7 +237,32 @@ finishes transmitting packet i-1 for the flow
    - let T be the observation time duration
    - Let Ti be the time utilized by flow i
    - Let Ri be the data rate of flow i
-   - The throughput of flow i is Si=(TiRi)/T
-   - Proportional fairness is to achieve ![](../src/Proportional%20fairness.png)
-   - U(•) is utility function,The common utility function is log,between **0~1**
+   - **The throughput of flow i is Si=(TiRi)/T**
+   - Proportional fairness is to achieve 
+   ![](../src/Proportional%20fairness.png)
+   - U(•) is utility function(like a **score**),The common utility function is log,between **0~1**,and **<font color=red>nerver be 0</font>** because of minimal level of service
+
+![](../src/Proportional-Fair%20Resource%20Allocation%20grpah%201.png)
+
+> a : Send Data
+> b : Watching Video
+> c : 
+> d : pixel、voice
+
+
+---
+
+# Max-Min Fair Resource Allocation
+1. Idea: **maximize the minimum resources the user gets among all**
+2. An illustrative example
+   - The **bottleneck link** is link A-C
+   - Do resource allocation on link A-C first
+   - Since the resources allocated to the dark green flow has been determined, the next bottleneck link is link A-B. As a result, the rate assigned to yellow flow is 1-1/3=2/3
+
+      ![](../src/Max-Min%20Fair%20Resource%20Allocation.png)
+
+      > You need to start the allocation from the congested point.
+
+
+
 
