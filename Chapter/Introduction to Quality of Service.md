@@ -11,7 +11,7 @@ However, since these protocols were not mandatory, not all computer devices supp
 1. Two main objectives
    - Provide performance assurance in the managed network
      **Performance assurance** is dynamically adjustable but must be **based on an average data**, for example, 1MHz per second or latency time.
-   - Support service differentiation among users/flows
+   - **Support service differentiation** among users/flows
      For example,Remote Surgery
 2. Formal definition of QoS
    - The capability to provide resource assurance and service 
@@ -231,7 +231,7 @@ finishes transmitting packet i-1 for the flow
 
 ---
 
-# Proportional-Fair Resource Allocation
+## Proportional-Fair Resource Allocation
 1. Motivation of proportional fairness : **Maximize the total wireless network throughput** while at the same time allowing all users **at least a minimal level of service**
 2. Formal definition
    - let T be the observation time duration
@@ -252,7 +252,7 @@ finishes transmitting packet i-1 for the flow
 
 ---
 
-# Max-Min Fair Resource Allocation
+## Max-Min Fair Resource Allocation
 1. Idea: **maximize the minimum resources the user gets among all**
 2. An illustrative example
    - The **bottleneck link** is link A-C

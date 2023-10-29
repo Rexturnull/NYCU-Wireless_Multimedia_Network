@@ -46,3 +46,11 @@ This is my graduate course notes when I was studying at NYCU.
    - Fairness
 4. Queueing Disciplines
    - Queueing Disciplines
+   - FIFO
+   - Fair Queueing
+   - Proportional-Fair Resource Allocation
+   - Max-Min Fair Resource Allocation
+
+---
+
+# [Integrated Service(IntServ)](./Chapter/Integrated%20Service.md)
