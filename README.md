@@ -54,3 +54,39 @@ This is my graduate course notes when I was studying at NYCU.
 ---
 
 # [Integrated Service(IntServ)](./Chapter/Integrated%20Service.md)
+1. IntServ
+2. Key Components of IntServ
+3. How to Setup Resource Reservation in IntServ
+   - Flow Specification
+4. Challenges of Route Selection
+5. More About Reservation Setup
+6. Admission Control
+7. Flow Identification
+8. Packet Scheduling
+9. Service Models Defined in IntServ
+   - Guarantee service
+   - Controlled-load service
+10. RSVP
+    - Two key concepts: flow and reservation
+    - Two major messages of RSVP
+    - RSVP operation
+    - Packet filtering
+    - Reservation style
+    - Explicit vs. wildcard server selection
+    - Distinct vs. shared reservation
+11. Disadvantages of IntServ
+12. More About Adspec
+13. One Pass v.s. One Pass with Advertising (OPWA)
+14. Slack Term
+
+# [Differentiated Service(DiffServ)](./Chapter/Differentiated%20Service.md)
+1. Comparisons of IntServ and DiffServ
+2. Conceptual Operations
+3. Basic Approach of DiffServ Framework
+4. Per-Hop Behaviors (PHBs)
+5. Services
+6. Differentiated Services Field
+7. Traffic Classification and Conditioning
+8. Assured Forwarding 
+9. Expedited Forwarding
+10. End-to-End Resource Management

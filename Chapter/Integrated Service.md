@@ -2,9 +2,8 @@ Integrated Service
 ===
 🔙 [MENU README](../README.md)
 
-# IntServ
-1. Motivation of IntServ
-   - **IP network does not support QoS.**Characteristics of IP network include:
+# Motivation of IntServ
+1. **IP network does not support QoS.** Characteristics of IP network include:
    - Best effort service only (**Non-existent error-checking and retransmission mechanism**)
    - Fair access to all(**without any priority**)
    - FIFO queueing discipline(Fair access)
@@ -13,6 +12,8 @@ Integrated Service
 3. The basic approach of IntServ is **<font color=red>per-flow resource reservation**</font>
 4. An implicit assumption of resource reservation is that **the demand for bandwidth still exceeds supply**,**If the demand for bandwidth is less than the supply, resource reservation is not needed.**
 5. The IntServ architecture assumes that the main quality of service about which **the network makes commitments is the per-packet delay** (in fact, the worst-case delay bound)
+
+---
 
 # Key Components of IntServ
 ![](../src/Key%20Components%20of%20IntServ.png)
@@ -31,6 +32,7 @@ Integrated Service
    - Best-effort
 
 ---
+
 # How to Setup Resource Reservation in IntServ
 1. Step 1: Flow specification
    - An application characterizes its traffic flow and specifies the QoS requirements
@@ -56,6 +58,8 @@ Integrated Service
 > - When a packet leaves the token bucket, the regulator removes the amount of tokens equal to the size of the outgoing packet
 > - The depth b is the limit on the maximum amount of tokens that 
 can be accumulated
+
+---
 
 # Challenges of Route Selection
 1. Currently protocols typically use a simple metric, such as delay, hop count, or administrative weight to **<font color=red>compute the shortest paths</font>** to all destination networks → **lacks of necessary information about the available resources to make an intelligent decision**
@@ -106,6 +110,7 @@ reservation setup protocol
    ```math
    EstimationRate = max[C_1,C_2,...C_n]
    ```
+---
 
 # Flow Identification
 1. In packet processing a router must examine every incoming packet and decide **if the packet belongs to one of the received RSVP flows**
@@ -119,6 +124,8 @@ reservation setup protocol
    - Destination port
 
 </font>
+
+---
 
 # Packet Scheduling
 1. Packet scheduling is responsible for enforcing resource 
@@ -221,3 +228,90 @@ accepted
      - Reservation style
      - **NHop**(Next Hop)
    - **Merging reservation requests whenever possible**
+
+## RSVP operation
+1. If Path state and Resv state exist,
+   - Path messages and Resv messages are sent by sender and receiver, respectively, **periodically to refresh existing states**
+2. Otherwise,
+   - Sender sends a Path message first to set up the Path state in the routers, and then receivers send Resv requests in the reverse direction
+3. **Admission control** and **policy control**
+4. RSVP is an **one pass reservation model**(Cannot negotiate)
+5. An enhancement is one pass with **advertising** (OPWA)
+
+## Packet filtering
+1. A separate function from resource reservation
+2. A function which selects those packets that can use the reserved resources
+3. Each packet is identified by five fields (five-tuple) in the packet header
+
+## Reservation style: 
+- how **multiple requests are merged** and which resource requests are forwarded to the upstream node
+- **Fixed filter (FF)**
+  - Explicit sender selection + **distinction reservation**
+  - E.g., FF(S1{Q1}, S2{Q2},.., Sn{Qn}), where Q1, Q2, .., Qn are 
+corresponding flowspecs, and S1, S2, .., Sn are senders
+   ![](./src/../../src/Fixed%20filter.png)
+
+
+- **Wildcard filter (WF)**
+  - Wildcard sender selection + **shared reservation**
+  -  All receivers share a single reservation whose **<font color=red>size is the largest of the resource requests</font>**
+  - **All upstream senders can use the reservation**
+  - E.g., WF(*, {Q}), where Q is the flowspec, * represents the wild-card sender selection
+   ![](../src/Wildcard%20filter.png)
+
+- **Shared explicit (SE)**
+  - Explicit sender selection + **shared reservation**
+  - E.g., SE((S1, S2, S4{Q}), where Q is the flowspec, and S1, S2, S3, S4 are senders
+   ![](./src/../../src/Shared%20explicit.png)
+
+
+- Shared reservation (WF and SE) are **designed for multicast applications**
+  - Typically only one or two people can speak at the same time in
+audio conferencing. An WF or SE reservation request for twice the bandwidth for one sender should be sufficient in such cases
+
+## Explicit vs. wildcard server selection
+- **Explicit**: the reservation made only for senders explicitly listed in the RESV message
+- **Wildcard**: for any sender
+
+## Distinct vs. shared reservation
+- **Distinct**: each sender has its own RSVP flow
+- **Shared**: using the same RSVP flow for multiple senders
+
+# Disadvantages of IntServ
+- When IP flow is terminated, the resources are not immediately released
+- **Lack of scalability**
+- **Refreshing signaling is bandwidth consuming**
+
+
+# More About Adspec
+1. This object is modified by an intermediate node, pass 
+information to the next hop, and finally the receiver can 
+determine the characteristics of the end-to-end path
+2. Adspec object has 3 components
+   - **Default general parameters fragment**, which contains
+     - Minimum path latency
+     - Path bandwidth
+     - Integrated Services hop count: the total umber of hops that are capable of support the Integrated Services
+     - Global break bit: 0 set by the sender. **If any node along the path does not support Integrated Services, the bit is set to 1 and the information is passed on to the receiver**
+     - Path MTU: the maximum transmission unit of the path
+   - **Guaranteed service fragment, which contains**
+     - Ctot: the sum of **rate-dependent delay** (rate & packet length) over a path
+     - Dtot: the sum of **rate-independent delay** (e.g., router pipeline delay) over a path
+     - Csum: partial sum of C between shaping points
+     - Dsum: partial sum of D between shaping points
+   – **Controlled load service fragment: no extra data in the Adspec**
+
+
+# One Pass v.s. One Pass with Advertising (OPWA)
+1. **One pass model does not support the capability of determining the characteristics of the path or whether the path is able to support the desired QoS**
+2. With **OPWA**, the sender includes an Adspec in its PATH message to collect the information about the path
+
+# Slack Term
+1. For guaranteed service, there is a “Slack term” field in the 
+RSpec in an RSVP message
+2. Assume a flow needs 2.5 Mbps bandwidth
+3. Slack term is utilized to compensate the increased delay
+4. Slack term is the difference between the desired delay and 
+the actual delay obtained with current bandwidth reservation (i.e., delay credit)
+
+![](./src/../../src/slack%20team.png)
