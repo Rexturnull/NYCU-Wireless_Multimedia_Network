@@ -14,8 +14,8 @@ However, since these protocols were not mandatory, not all computer devices supp
    - **Support service differentiation** among users/flows
      For example,Remote Surgery
 2. Formal definition of QoS
-   - The capability to provide resource assurance and service 
-differentiation in a network is often referred to as quality of service
+   - **The capability to provide resource assurance and service 
+differentiation in a network** is often referred to as quality of service
 3. How to provide QoS?
    - Resource allocation mechanism (i.e., user/resource scheduling)
    - Proper definition of the adopted QoS index
@@ -55,7 +55,7 @@ transmitted over the links
 3. Network should provide a congestion control mechanism to deal with such a situation
     >  We need to select the packet source with the **highest content in the queue or buffer** for traffic control .
     > Or **appropriate dropping of packets**, allowing the entire link to be relieved **before reaching a critical threshold**.
-4. Strategy of **traditional** Internet
+4. Strategy of **traditional Internet**
    - Always let the sources send as much data as they want
    - Then recover from the congestion when it occurs
    - Easier approach but it can be disruptive because many packets many be discarded by the network before congestions can be controlled
@@ -63,7 +63,7 @@ transmitted over the links
    - **In network elements**
     Various **queuing** disciplines can be used to control the order in **which packets get transmitted and which packets get dropped**.
    - **At the hosts’ end**
-    The congestion control mechanism paces how fast sources are allowed to send packets
+    **The congestion control** mechanism paces how fast sources are allowed to send packets
 
 
 
@@ -101,15 +101,11 @@ control makes sense for multimedia applications
 6. **Retransmission Delay**: When a packet is lost or damaged during transmission and needs to be resent, it introduces additional delay. This is typically associated with error recovery mechanisms within the network.
 
 ## Effectively
-- How to evaluate the **effectiveness** of the adopted resource 
-allocation?
+- How to evaluate the **effectiveness** of the adopted resource allocation?
   - Through **throughput and delay** performance
   - **<font color="red">However, throughput and delay conflict with each other</font>**
-  - We want send as many packets into the network as possible to 
-drive the utilization of all links up to 100%
-  - While this would result in increasing the number of queued 
-packets in the network; and thus the queue length and queueing 
-delay increase as well
+  - We want send as many packets into the network as possible to drive the utilization of all links up to 100%
+  - While this would result in increasing the number of queued packets in the network; and thus the queue length and queueing delay increase as well
 - **<font color="red"> Criteria : Ratio of Throughput to Delay </font>**
   1. One common metric to evaluate the effectiveness of a resource allocation scheme is the ratio of throughput to delay
    ![](../src/ratio%20of%20throughput%20to%20delay.png)
@@ -130,7 +126,7 @@ delay increase as well
 - **<font color="red">Criteria : Jain’s fairness index</font>**
   1. Given a set of flow throughputs , the fairness index to these flows is
   ![](../src/Jain's%20fairness%20index.png)
-  2. The fairness index always results in a number between 0 and 1, **with 1 representing the greatest fairness**. Consider n flows, each one receives a throughput of 1 unit of data per second, therefore the fairness index is
+  2. The fairness index always results in a number between 0 and 1, **<font color=red>with 1 representing the greatest fairness</font>**. Consider n flows, each one receives a throughput of 1 unit of data per second, therefore the fairness index is
    ![](../src/fairness%20index.png)
   3. Suppose one flow receives a throughput of 1+X. Now the fairness 
 index is
@@ -149,13 +145,10 @@ index is
 
 # Queueing Disciplines
 ## Queueing Disciplines
-1. Method implemented in routers to govern how packets are 
-buffered while waiting to be transmitted
-2. Queueing algorithm can be thought of as allocating both 
-**bandwidth** (which packets get transmitted) and **buffer space** (which packet get discarded)
+1. Method implemented in routers to govern how packets are buffered while waiting to be transmitted
+2. Queueing algorithm can be thought of as allocating both **bandwidth** (which packets get transmitted) and **buffer space** (which packet get discarded)
 3. Queueing algorithm directly **affects the latency experienced by a packet by determining how long a packet waits to be transmitted**
-4. Two common queueing algorithms are first-in first-out 
-(**FIFO**) and fair queueing (**FQ**)
+4. Two common queueing algorithms are first-in first-out (**FIFO**) and fair queueing (**FQ**)
 
 ## FIFO
 1. The first packet that arrives at a router is the first packet to be transmitted <font color="red">without priority</font>
@@ -174,12 +167,10 @@ buffered while waiting to be transmitted
    -  Router **always transmits packets out of the highest-priority queue** if the queue is nonempty before moving on to the next priority queue
    - Within each priority, packets are still managed in a FIFO manner
 3. Problem of priority queueing: **high priority queue can starve out all the other queues**
-   To solve this problem : we will **allocate a mininum service rate to lower-priority queues**, ensuring they receive some share of the service capacity.
+   To solve this problem : we will **<font color=red>allocate a mininum service rate to lower-priority queues</font>**, ensuring they receive some share of the service capacity.
 
 ## Fair Queueing
-1. Main problem with FIFO queuing: it does not discriminate between different traffic sources, or it 
-does not separate packets according to the flow to 
-which they belong.Fair queuing (FQ) is to address this problem.
+1. Main problem with FIFO queuing: it does not discriminate between different traffic sources, or it does not separate packets according to the flow to which they belong.Fair queuing (FQ) is to address this problem.
 2. Idea
    - Router maintains a **separate queue for each flow** currently being handled by the router
    - The router then serves these queues **in a sort of round robin**
@@ -195,8 +186,8 @@ which they belong.Fair queuing (FQ) is to address this problem.
       then a simple round-robin servicing of packets from each flow’s queue 
       will give the first flow 2/3 of the link’s bandwidth and 
       the second flow only 1/3 of its bandwidth
-4. We really want is bit-by-bit round-robiny,but it is not feasible to interleave the bits from different packets
-5. The FQ mechanism therefore simulates this behavior by **first determining when a given packet would finish being transmitted** if it were being sent using bit-by-bit round-robin,and then **using this finishing time to sequence the packets for transmission**
+4. **We really want is bit-by-bit round-robiny,but it is not feasible to interleave the bits from different packets**
+5. The FQ mechanism therefore simulates this behavior by **<font color=red>first determining when a given packet would finish being transmitted</font>** if it were being sent using bit-by-bit round-robin,and then **<font color=red>using this finishing time to sequence the packets for transmission</font>**
    <font color=red>
    - Pi: the length of packet i
    - Si: time when the router starts to transmit packet i
@@ -207,14 +198,13 @@ which they belong.Fair queuing (FQ) is to address this problem.
 
    **Packets are transmitted in order of increasing Fi values.**
 5. When do we start transmitting packet i
-   - Depends on whether packet i arrived before or after the router 
-finishes transmitting packet i-1 for the flow
+   - Depends on whether packet i arrived before or after the router finishes transmitting packet i-1 for the flow
    - Let Ai denote the time that packet i arrives at the router
-   - Then Si = max(Fi-1, Ai)
-   -  Fi = max(Fi-1, Ai) + Pi
-   -  Now for every flow, we calculate Fi for each packet that arrives using our formula
-   -  We then treat all the Fias timestamps
-   -  Next packet to be transmitted is always the packet that has the lowest finish timestamp
+   - **Then Si = max(Fi-1, Ai)**
+   - **Fi = max(Fi-1, Ai) + Pi**
+   - Now for every flow, we calculate Fi for each packet that arrives using our formula
+   - We then treat all the Fias timestamps
+   - **Next packet to be transmitted is always the packet that has the lowest finish timestamp**
 
 ![](./src/../../src/Fair%20Queue%20transmitting%20packet%20i.png)
 
@@ -226,7 +216,7 @@ finishes transmitting packet i-1 for the flow
 7. **Weighted fair queueing (WFQ)**
    - Each flow (queue) is assigned a weight
    - This weight logically specifies how many bits to transmit each time the router serves that queue
-     **Example, weight:2 ,P / 2 to reduce the value of Fi and increase its transmission priority.**
+     **<font color=red>Example, weight:2 ,P / 2 to reduce the value of Fi and increase its transmission priority.</font>**
    - Therefore, this weight controls the percentage of the link’s bandwidth that the flow will get
 
 ---
@@ -237,7 +227,7 @@ finishes transmitting packet i-1 for the flow
    - let T be the observation time duration
    - Let Ti be the time utilized by flow i
    - Let Ri be the data rate of flow i
-   - **The throughput of flow i is Si=(TiRi)/T**
+   - **<font color=red>The throughput of flow i is Si=(TiRi)/T</font>**
    - Proportional fairness is to achieve 
    ![](../src/Proportional%20fairness.png)
    - U(•) is utility function(like a **score**),The common utility function is log,between **0~1**,and **<font color=red>nerver be 0</font>** because of minimal level of service
@@ -255,8 +245,8 @@ finishes transmitting packet i-1 for the flow
 ## Max-Min Fair Resource Allocation
 1. Idea: **maximize the minimum resources the user gets among all**
 2. An illustrative example
-   - The **bottleneck link** is link A-C
-   - Do resource allocation on link A-C first
+   - The **<font color=red>bottleneck link</font>** is link A-C
+   - **Do resource allocation on link A-C first**
    - Since the resources allocated to the dark green flow has been determined, the next bottleneck link is link A-B. As a result, the rate assigned to yellow flow is 1-1/3=2/3
 
       ![](../src/Max-Min%20Fair%20Resource%20Allocation.png)

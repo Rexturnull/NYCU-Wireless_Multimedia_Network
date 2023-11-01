@@ -178,8 +178,40 @@ different responsibilities
 #  Expedited Forwarding
 1. EF is to create low loss, low delay, and assured bandwidth services
 2. EF is defined as a forwarding treatment for a traffic aggregate that the departure rate of the aggregate’s packet from any DS node must equal or exceed a configurable rate
-3. EF traffic should receive this rate independent of the intensity of any other traffic attempting to transit the node
+3. **EF traffic should receive this rate independent of the intensity of any other traffic attempting to transit the node**
 4. EF traffic can preempt other traffic within a certain limit
-5. Assigned codepoint is 101110
+5. **Assigned codepoint is 101110**
 ---
-#  End-to-End Resource Management
+# End-to-End Resource Management
+1. **Integrated services over differentiated services**
+   - Two-tier resource allocation mode: DiffServ distributes aggregated resources in the core networks to customer networks; IntServ further allocates the resources at finer granularity to individual users or flows
+   - At the boundary of the network the IntServ requests are mapped onto the underlying DiffServ network, included mappings are
+     - Selecting an appropriate PHB or a set of PHBs for the requested services
+     - Performing appropriate policing at the edge of the DiffServ network
+     - Exporting IntServ parameters from the DiffServ network
+   - An illustrative example of IntServ over DiffServ
+     - An enterprise network with 4 routers and 2 LANs
+     - The access router connects the enterprise network to its ISP and is responsible for traffic classification
+     - When a sender initiates a transaction, it exchanges RSVP PATH and RESV messages with the receiver
+     - The RSVP messages are ignored through the ISP that supports only DiffServ
+     - When RESV messages pass through the access router, it consults with the policy server to decide about admission control
+     - Suppose the enterprise has paid for 10 Mbps service and 9 Mbps has been allocated, less than 1 Mbps new reservation will be admitted
+   - Policy server can decide how IntServ requests should be mapped to DiffServ model
+
+
+   ![](../src/End-to-End%20Resource%20Management.png)
+
+2. Interdomain bandwidth allocation
+   - Different domains are usually separately owned and administrated, and the relationship between any two different domains is governed by the SLA
+   - The SLA could be dynamically and infrequently changed, and **bandwidth broker (BB) approach can achieve dynamic interdomain resource negotiation**
+   - An illustrative example
+     - The backbone consists of 3 ISPs and an enterprise network that can communicate with many receivers in any of the ISPs
+     - The BB of the enterprise network performs admission control for reservation requests from its own users
+
+   ![](../src/End-to-End%20Resource%20Management-1.png)
+
+3. In essence, BBs act as resource management agents for their ISPs and perform the following 3 main functions
+   - Admission control: decisions are based on the predefined provisioning algorithms for the networks
+   - Policy control: handle the administrative (e.g., priority and special restrictions) and pricing policies
+   - Reservation aggregation: collect multiple requests from users and make a single request for resources to improve the system scalability
+   - The drawback of BB approach is that BBs must know where the new traffic is going in order to make accurate bandwidth requests
