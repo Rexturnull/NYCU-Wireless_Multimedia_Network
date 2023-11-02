@@ -31,7 +31,9 @@ When traffic entering a network,
 4. **forwarded**
 
 ![](../src/Conceptual%20Operations.png)
+
 ---
+
 #  Basic Approach of DiffServ Framework
 1. With Differentiated services (DS) traffic is divided into a small number of groups called forwarding classes
 2. The forwarding class is encoded in the IP packet header
@@ -100,13 +102,14 @@ different responsibilities
    - Maintain partially backward compatible with known current use of the IP precedence field
    - **We name this set of PHBs class selector PHBs**
    - **Assigned codepoints: xxx000**
-   - The **eight class selector (2^3) PHBs** **must yield at least two different forwarding classes**
+   - The **<font color=red>eight class selector (2^3)</font> PHBs** **must yield at least <font color=red>two different forwarding classes</font>**
    - **The PHB mapped by a codepoint with the larger numerical value must receive better or equal forwarding treatment** than the one with a lower numerical value
 6. Current codepoint allocation (been standardized by IETF)
-   - **Assured forwarding (AF)** (RFC 2597 and RFC 3260): assurance of delivery under conditions  (**Even more stringent**)
-   - **Expedited forwarding (EF)** (RFC 3246): dedicated to low-loss, low-latency traffic
+   - **Assured forwarding (AF)** (RFC 2597 and RFC 3260): assurance of delivery under conditions
+   - **Expedited forwarding (EF)** (RFC 3246): dedicated to low-loss, low-latency traffic  (**Even more stringent**)
 
 ---
+
 #  Traffic Classification and Conditioning
 1. Two responsibilities of boundary routers are **classification and conditioning**
 2. Classification module contains a classifier and a marker
@@ -124,11 +127,11 @@ different responsibilities
    - **In-profile packets are allowed to enter the network**, while **out-of-profile packets are conditioned based on the TCS**
    - Most **meters are implemented as <font color=red>token buckets</font>**
 10. **Marker**
-    - Markers **set the DS field of a packet to a particular DSCP**, and add the marked packets to the forwarding class
+    - Markers **<font color=red>set the DS field</font> of a packet to a particular DSCP**, and add the marked packets to the forwarding class
     - Markers may act on unmarked packets or remark marked packets
     - Marking could be done by the applications itself, the first-hop router of the LAN, or the boundary router of a service provider
     - **Remarking is necessary at the boundary of two administrative domains using different DSCPs**
-    - When a packet remarked with **DSCP receives worse forwarding treatment → PHB demotion (typically)**
+    - When a packet remarked with **DSCP receives worse forwarding treatment → <font color=red>PHB demotion (typically)</font>**
     - When **receiving better forwarding treatment → PHB promotion**
     - Typically boundary routers demote out-of-profile packets to a DSCP with worse forwarding treatmen
 11. **Shaper**
@@ -151,11 +154,12 @@ different responsibilities
       - At some heavily congested hot spots, additional traffic policing may be applied or the traffic may be shaped at some points to ensure arrival pattern
 
 ---
+
 #  Assured Forwarding 
 1. Basic idea behind AF came from the **RED(Randy Early Drop) with In and Out (RIO) scheme**
 2. What’s RIO?
    - **A service profile specifies the expected capacity for the user**
-   - Boundary nodes monitor the traffic flows and **tag the packets(Not DSCP)** as being in or out of their profiles
+   - Boundary nodes monitor the traffic flows and **tag the packets(Not DSCP,but Priority)** as being in or out of their profiles
    - During congestion the packets tagged as out will be dropped first
    - The service provider should provide their networks to meet the expected capacities for all in-profile packets and allow out-of-profile packets only when excessive bandwidth is available
 
@@ -175,15 +179,18 @@ different responsibilities
 ![](../src/AF%20PHB%20code%20points.png)
 
 ---
+
 #  Expedited Forwarding
 1. EF is to create low loss, low delay, and assured bandwidth services
 2. EF is defined as a forwarding treatment for a traffic aggregate that the departure rate of the aggregate’s packet from any DS node must equal or exceed a configurable rate
 3. **EF traffic should receive this rate independent of the intensity of any other traffic attempting to transit the node**
 4. EF traffic can preempt other traffic within a certain limit
 5. **Assigned codepoint is 101110**
+
 ---
+
 # End-to-End Resource Management
-1. **Integrated services over differentiated services**
+1. **<font color=red>Integrated services over differentiated services</font>**
    - Two-tier resource allocation mode: DiffServ distributes aggregated resources in the core networks to customer networks; IntServ further allocates the resources at finer granularity to individual users or flows
    - At the boundary of the network the IntServ requests are mapped onto the underlying DiffServ network, included mappings are
      - Selecting an appropriate PHB or a set of PHBs for the requested services
@@ -203,15 +210,14 @@ different responsibilities
 
 2. Interdomain bandwidth allocation
    - Different domains are usually separately owned and administrated, and the relationship between any two different domains is governed by the SLA
-   - The SLA could be dynamically and infrequently changed, and **bandwidth broker (BB) approach can achieve dynamic interdomain resource negotiation**
+   - The SLA could be dynamically and infrequently changed, and **<font color=red>bandwidth broker (BB)</font> approach can achieve dynamic interdomain resource negotiation**
    - An illustrative example
      - The backbone consists of 3 ISPs and an enterprise network that can communicate with many receivers in any of the ISPs
      - The BB of the enterprise network performs admission control for reservation requests from its own users
 
    ![](../src/End-to-End%20Resource%20Management-1.png)
-
 3. In essence, BBs act as resource management agents for their ISPs and perform the following 3 main functions
-   - Admission control: decisions are based on the predefined provisioning algorithms for the networks
-   - Policy control: handle the administrative (e.g., priority and special restrictions) and pricing policies
-   - Reservation aggregation: collect multiple requests from users and make a single request for resources to improve the system scalability
+   - **Admission control**: decisions are based on the predefined provisioning algorithms for the networks
+   - **Policy control**: handle the administrative (e.g., priority and special restrictions) and pricing policies
+   -** Reservation aggregation**: collect multiple requests from users and make a single request for resources to improve the system scalability
    - The drawback of BB approach is that BBs must know where the new traffic is going in order to make accurate bandwidth requests

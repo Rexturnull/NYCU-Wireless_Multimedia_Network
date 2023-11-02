@@ -22,6 +22,9 @@ This is my graduate course notes when I was studying at NYCU.
    - CoMP (Coordinated Multi-Point Transmission)
    - Beamforming technolog
 
+
+---
+
 # [GSM Architecture](./Chapter/GSM%20Architecture.md) 
 1. 2G
 2. 3G
@@ -30,6 +33,9 @@ This is my graduate course notes when I was studying at NYCU.
 5. From UMTS to LTE
    - Circuit Core (Circuit Switched Core) 
    - Packet Core (IP convergence)
+
+
+---
 
 # [Introduction to Quality of Service (QoS)](./Chapter/Introduction%20to%20Quality%20of%20Service.md)
 1. Quality of Service
@@ -79,6 +85,8 @@ This is my graduate course notes when I was studying at NYCU.
 13. One Pass v.s. One Pass with Advertising (OPWA)
 14. Slack Term
 
+---
+
 # [Differentiated Service(DiffServ)](./Chapter/Differentiated%20Service.md)
 1. Comparisons of IntServ and DiffServ
 2. Conceptual Operations
@@ -90,6 +98,9 @@ This is my graduate course notes when I was studying at NYCU.
 8. Assured Forwarding 
 9. Expedited Forwarding
 10. End-to-End Resource Management
+
+
+---
 
 # [MultiProtocol Label Switching](./Chapter/MultiProtocol%20Label%20Switching.md)
 1. History of Label Switching
